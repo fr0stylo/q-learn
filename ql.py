@@ -27,7 +27,7 @@ class QL:
         self.q = np.random.rand(timespan+1, vertexLength, vertexLength)
 
     def calculate_next_move(self, time):
-        def wrapper(start, pointsAvailable):
+        def wrapper(start, pointsAvailable, _):
             if np.random.randn() < self.epsilion:
                 index = np.argmax(self.q[time, start, pointsAvailable])
                 return pointsAvailable[index]
@@ -37,7 +37,7 @@ class QL:
         return wrapper
 
     def get_next_move(self, time):
-        def wrapper(start, pointsAvailable):
+        def wrapper(start, pointsAvailable, _):
             index = np.argmax(self.q[time, start, pointsAvailable])
             return pointsAvailable[index]
 
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     gf.generate_edges()
 
     model = QL(graph_size, gf, start_point, end_point,
-                      epochs, discount, epsilion, graph_time, learning_rate)
+               epochs, discount, epsilion, graph_time, learning_rate)
 
     model.train()
     model.get_best_path(start_point, end_point)
