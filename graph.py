@@ -8,7 +8,7 @@ class Graph:
 
     def generate_edges(self):
         connection_distibution = np.random.normal(
-            100 * 0.5 * 0.2, np.sqrt(100 * 0.5 * 0.5 * 0.2), size=len(self.vertices)).round(0).astype(int)
+            100 * 0.5 , np.sqrt(100 * 0.5 * 0.5), size=len(self.vertices)).round(0).astype(int)
 
         for i, _ in enumerate(self.vertices):
             subset = np.random.choice(

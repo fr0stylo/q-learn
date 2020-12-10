@@ -47,7 +47,7 @@ class QL:
         for epoch in range(self.epochs):
             start = self.start
 
-            for time, graph in enumerate(self.generator.go_through_time(), 1):
+            for time, graph in enumerate(self.generator.graphs, 1):
                 (old_start, new_start, weight) = graph.move_ext(
                     start, self.calculate_next_move(time))
 
@@ -75,7 +75,7 @@ class QL:
 
     def get_best_path(self, start, end):
         weights = 0
-        for time, graph in enumerate(self.generator.go_through_time()):
+        for time, graph in enumerate(self.generator.graphs):
             (old_start, new_start, weight) = graph.move_ext(
                 start, self.get_next_move(time))
             weights += weight
@@ -89,7 +89,7 @@ class QL:
 if __name__ == "__main__":
     np.random.seed(1)
     start_point = 0
-    end_point = 49
+    end_point = 19
     graph_size = 50
     graph_time = 300
 
